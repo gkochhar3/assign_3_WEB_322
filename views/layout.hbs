@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wildlife Gallery</title>
+    <style>
+        /* The outer container for the image display */
+        .presentation-box {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .image-frame {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .image-frame img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-info h2 {
+            margin: 10px 0;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Flexbox layout for Sidebar + Content */
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        nav {
+            width: 220px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        nav h3 {
+            margin-top: 0;
+            color: #333;
+            font-family: sans-serif;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-family: sans-serif;
+            font-size: 0.95rem;
+        }
+
+        /* Submit Button Styling */
+        .btn-submit {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #34495e;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 40px;
+            background-color: #fff;
+        }
+        .user-menu {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: sans-serif;
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-menu:hover {
+    background: #2c3e50;
+    border-color: #2c3e50;
+}
+
+/* Default state: Show name, hide logout */
+.logout-link { display: none; text-decoration: none; color: white; font-weight: bold; }
+.user-name { display: inline; color: #333; font-weight: bold; }
+
+/* Hover state: Hide name, show logout */
+.user-menu:hover .user-name {
+    display: none;
+}
+
+.user-menu:hover .logout-link {
+    display: inline;
+}
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <nav>
+        <h3>Wildlife Legend</h3>
+        
+        <form action="/select-animal" method="GET" class="nav-form">
+            {{#each menuItems}}
+                <label>
+                    <input type="radio" name="animal" value="{{this}}"> 
+                    {{this}}
+                </label>
+            {{/each}}
+
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </nav>
+
+    <div class="content">
+        {{{body}}}
+    </div>
+
+    <div class="user-menu">
+    <span class="user-name">{{currentUser}}</span>
+    <a href="/logout" class="logout-link">Logout</a>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+bears.jpg
+deer.jpg
+rabbit.jpg
+wolfpack.jpg
+arcticfox.jpg
+salmon.jpg
+wildlife.jpg

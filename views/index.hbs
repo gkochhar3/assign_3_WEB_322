@@ -1,0 +1,11 @@
+<main>
+    <h1>Wildlife Gallery</h1>
+    <div class="gallery-grid">
+        {{#each animals}}
+            <div class="animal-card">
+                <img src="/images/{{this.file}}" alt="{{this.name}}" style="width:300px;">
+                <h3>{{this.name}}</h3>
+            </div>
+        {{/each}}
+    </div>
+</main>
