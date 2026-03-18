@@ -4,7 +4,7 @@ const hbs = require('hbs');
 const lineByLine = require('linebyline');
 const fs = require('fs');
 const session = require('express-session'); 
-const users = require('./users.json'); // Your JSON credentials
+const users = require('./users.json'); // JSON credentials
 const { createSecureContext } = require('tls');
 
 const app = express();
@@ -108,7 +108,12 @@ app.get('/animal/:type', isAuthenticated, (req, res) => {
     });
 });
 
-// --- 5. START SERVER ---
-app.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000');
+// Add this export line
+module.exports = app;
+
+// Keep your listen block, but use process.env.PORT
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
+
