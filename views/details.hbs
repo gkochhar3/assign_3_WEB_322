@@ -1,0 +1,35 @@
+<div class="product-container">
+    <h1>{{animal.name}}</h1>
+    <img src="/images/{{animal.imageFile}}" alt="{{animal.name}}" style="max-width: 500px;">
+    
+    <div class="info">
+        <p><strong>Description:</strong> {{animal.description}}</p>
+        <p><strong>Price:</strong> ${{animal.price}}</p>
+        <p><strong>Availability:</strong> <span class="availability-text">{{animal.availability}}</span></p>
+    </div>
+    
+    <br>
+    <a href="/">Return to Gallery</a>
+</div>
+
+<div class="action-buttons">
+    {{#if (eq animal.availability "Available")}} 
+        <form action="/buy-animal/{{animal._id}}" method="POST" style="display:inline;">
+            <button type="submit" class="btn-buy" onclick="alert('SOLD')">BUY</button>
+        </form>
+    {{else}}
+        <button disabled style="background-color: gray; color: white;">SOLD OUT</button>
+    {{/if}}
+
+    <button type="button" class="btn-cancel" onclick="cancelAction()">CANCEL</button>
+</div>
+
+<script>
+    function cancelAction() {
+        alert("MAYBE NEXT TIME");
+        // We pass the current animal's slug back to the home page in the URL
+        // Example: /?lastViewed=arcticfox
+        const currentAnimal = "{{animal.slug}}"; 
+        window.location.href = "/?lastViewed=" + currentAnimal;
+    }
+</script>

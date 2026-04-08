@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wildlife Gallery</title>
+    <link rel="stylesheet" href="/css/style.css">
     <style>
         /* The outer container for the image display */
         .presentation-box {
@@ -98,6 +99,11 @@
             padding: 40px;
             background-color: #fff;
         }
+        .availability-text {
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #27ae60; /* A nice green color for 'Available' */
+}
         .user-menu {
     position: absolute;
     top: 20px;
@@ -119,8 +125,16 @@
 }
 
 /* Default state: Show name, hide logout */
-.logout-link { display: none; text-decoration: none; color: white; font-weight: bold; }
-.user-name { display: inline; color: #333; font-weight: bold; }
+.logout-link { display: none; 
+text-decoration: none; 
+color: white; 
+font-weight: bold; 
+}
+
+.user-name { display: inline; 
+color: #333; 
+font-weight: bold; 
+}
 
 /* Hover state: Hide name, show logout */
 .user-menu:hover .user-name {
@@ -136,29 +150,25 @@
 
 <div class="main-container">
     <nav>
-        <h3>Wildlife Legend</h3>
-        
-        <form action="/select-animal" method="GET" class="nav-form">
-            {{#each menuItems}}
-                <label>
-                    <input type="radio" name="animal" value="{{this}}"> 
-                    {{this}}
-                </label>
-            {{/each}}
-
+       <h3><a href="/" style="text-decoration: none; color: inherit;">Wildlife Legend</a></h3>
+        <form action="/select-animal" method="POST" class="nav-form">
+            <label><input type="radio" name="animal" value="arcticfox"> Arctic Fox</label>
+            <label><input type="radio" name="animal" value="bears"> Bears</label>
+            <label><input type="radio" name="animal" value="deer"> Deer</label>
+            <label><input type="radio" name="animal" value="rabbit"> Rabbit</label>
+            <label><input type="radio" name="animal" value="salmon"> Salmon</label>
+            <label><input type="radio" name="animal" value="wolfpack"> Wolfpack</label>
+            
             <button type="submit" class="btn-submit">Submit</button>
         </form>
     </nav>
 
     <div class="content">
+        <div class="user-menu">
+            <span class="user-name">{{currentUser}}</span>
+            <a href="/logout" class="logout-link">Logout</a>
+        </div>
+
         {{{body}}}
-    </div>
-
-    <div class="user-menu">
-    <span class="user-name">{{currentUser}}</span>
-    <a href="/logout" class="logout-link">Logout</a>
-</div>
-</div>
-
-</body>
+    </div> </div> </body>
 </html>

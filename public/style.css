@@ -1,0 +1,20 @@
+.btn-buy {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
